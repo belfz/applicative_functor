@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["OptionApplicativeFunctor","An OptionApplicativeFunctor trait."]]});
