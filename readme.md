@@ -1,8 +1,8 @@
 ## applicative_functor in Rust
 
-The point of this crate is to add applicative functor's functionality to existing monadic entities in Rust's standard library.
+The point of this crate is to add applicative functor's interface to existing monadic entities in Rust's standard library.
 
-Currently, an implementation for `Option` is available, adding the `ap(self, other: Option<T>) -> Option<U>` method to `Option`'s interface.
+Currently, an implementation for `Option` is available (`OptionApplicativeFunctor`), adding the `ap(self, other: Option<T>) -> Option<U>` method to `Option`'s interface.
 
 ### Example
 
