@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `lib` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, lib">
+    <meta name="description" content="API documentation for the Rust `Mappable` trait in crate `lib`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Mappable">
 
-    <title>lib - Rust</title>
+    <title>lib::Mappable - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
@@ -17,7 +17,7 @@
     
     
 </head>
-<body class="rustdoc mod">
+<body class="rustdoc trait">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Crate lib</p><div class="block items"><ul><li><a href="#traits">Traits</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'lib', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Trait Mappable</p><div class="block items"><ul><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='index.html'>lib</a></p><script>window.sidebarCurrent = {name: 'Mappable', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -44,21 +44,23 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>lib</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>lib</a>::<wbr><a class="trait" href=''>Mappable</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/lib/lib.rs.html#1-126' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Applicative Functors in Rust</p>
-</div><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="trait" href="trait.ApplicativeFunctor.html"
-                                  title='trait lib::ApplicativeFunctor'>ApplicativeFunctor</a></td>
-                           <td class='docblock-short'>
-                                <p>An ApplicativeFunctor trait.</p>
-                           </td>
-                       </tr></table></section>
+               </span><a class='srclink' href='../src/lib/lib.rs.html#80' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Mappable&lt;T&gt; { }</pre><div class='docblock'><p>Marker thread for functors - types implementing <code>map</code> function,
+like <code>Option&lt;T&gt;</code> or <code>Result&lt;T, E&gt;</code>.</p>
+</div>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl&lt;T&gt; Mappable&lt;T&gt; for <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;</code></li>
+<li><code>impl&lt;T, E&gt; Mappable&lt;T&gt; for <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, E&gt;</code></li>
+</ul><script type="text/javascript" async
+                         src="../implementors/lib/trait.Mappable.js">
+                 </script></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

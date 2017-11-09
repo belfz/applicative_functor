@@ -48,18 +48,37 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/lib/lib.rs.html#38-41' title='goto source code'>[src]</a></span></h1>
-<pre class='rust trait'>pub trait ApplicativeFunctor&lt;F, T, U&gt; {
-    fn <a href='#tymethod.ap' class='fnname'>ap</a>(self, _: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;U&gt;;
+               </span><a class='srclink' href='../src/lib/lib.rs.html#96-98' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait ApplicativeFunctor&lt;F, T, U, A, B&gt; {
+    fn <a href='#tymethod.ap' class='fnname'>ap</a>(self, other: A) -&gt; B;
 }</pre><div class='docblock'><p>An ApplicativeFunctor trait.</p>
+
+<p>This crate comes with default implementation of Applicative Functor for the Option type.</p>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="self">self</span>::<span class="ident">applicative_functor</span>::<span class="ident">ApplicativeFunctor</span>;
+ 
+<span class="kw">let</span> <span class="ident">af_opt</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="ident">u32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="op">|</span><span class="ident">x</span>: <span class="ident">u32</span><span class="op">|</span> <span class="ident">x</span> <span class="op">*</span> <span class="number">2</span>);
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">af_opt</span>.<span class="ident">ap</span>(<span class="prelude-val">Some</span>(<span class="number">21</span>)), <span class="prelude-val">Some</span>(<span class="number">42</span>));</pre>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="self">self</span>::<span class="ident">applicative_functor</span>::<span class="ident">ApplicativeFunctor</span>;
+ 
+<span class="kw">let</span> <span class="ident">af_res</span>: <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw">fn</span>(<span class="ident">f32</span>) <span class="op">-&gt;</span> <span class="ident">f32</span>, ()<span class="op">&gt;</span> <span class="op">=</span> <span class="prelude-val">Ok</span>(<span class="op">|</span><span class="ident">x</span>: <span class="ident">f32</span><span class="op">|</span> <span class="ident">x</span> <span class="op">*</span> <span class="number">4.0</span>);
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">af_res</span>.<span class="ident">ap</span>(<span class="prelude-val">Ok</span>(<span class="number">10.5</span>)), <span class="prelude-val">Ok</span>(<span class="number">42.0</span>));</pre>
 </div>
-            <h2 id='required-methods'>Required Methods</h2>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
             <div class='methods'>
-        <h3 id='tymethod.ap' class='method'><span id='ap.v' class='invisible'><code>fn <a href='#tymethod.ap' class='fnname'>ap</a>(self, _: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;U&gt;</code></span></h3><div class='docblock'><p><code>ap</code> function always returns an Option.</p>
-</div></div>
-        <h2 id='implementors'>Implementors</h2>
+        <h3 id='tymethod.ap' class='method'><span id='ap.v' class='invisible'><code>fn <a href='#tymethod.ap' class='fnname'>ap</a>(self, other: A) -&gt; B</code></span></h3></div>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl&lt;F, T, U&gt; ApplicativeFunctor&lt;F, T, U&gt; for <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(T) -&gt; U,&nbsp;</span></code></li>
+    <li><code>impl&lt;F, T, U&gt; ApplicativeFunctor&lt;F, T, U, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;U&gt;&gt; for <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(T) -&gt; U,&nbsp;</span></code></li>
+<li><code>impl&lt;F, T, U, E&gt; ApplicativeFunctor&lt;F, T, U, <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;T, E&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;U, E&gt;&gt; for <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;F, E&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(T) -&gt; U,&nbsp;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../implementors/lib/trait.ApplicativeFunctor.js">
                  </script></section>
