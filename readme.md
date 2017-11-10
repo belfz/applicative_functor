@@ -15,4 +15,4 @@ let af_res: Result<fn(f32) -> f32, ()> = Ok(|x: f32| x * 4.0);
 assert_eq!(af_res.ap(Ok(10.5)), Ok(42.0));
 ```
 
-__Note__: this crate has not been published to crates.io yet.
+__Note__: this crate has not been published to crates.io yet. But possibly soon will be.
