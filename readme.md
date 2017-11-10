@@ -2,6 +2,8 @@
 
 The point of this crate is to add applicative functor's interface to existing monadic entities in Rust's standard library: `Option<T>` and `Result<T, E>`.
 
+Full documentation is [available here](https://belfz.github.io/applicative_functor/applicative_functor/trait.ApplicativeFunctor.html).
+
 ### Example
 
 ```rust
