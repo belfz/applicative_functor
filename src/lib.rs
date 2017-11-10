@@ -113,11 +113,11 @@ impl<T, E> Functor<T> for Result<T, E> {
 /// let af_res: Result<fn(f32) -> f32, ()> = Ok(|x: f32| x * 4.0);
 /// assert_eq!(af_res.ap(Ok(10.5)), Ok(42.0));
 /// ```
-pub trait Applicative<F, T, U, A: Functor<T>, B: Functor<U>> where F: Fn(T) -> U {
+pub trait Applicative<T, U, A: Functor<T>, B: Functor<U>> {
     fn ap(self, other: A) -> B;
 }
 
-impl<F, T, U> Applicative<F, T, U, Option<T>, Option<U>> for Option<F> where F: Fn(T) -> U {
+impl<F, T, U> Applicative<T, U, Option<T>, Option<U>> for Option<F> where F: Fn(T) -> U {
     fn ap(self, other: Option<T>) -> Option<U> {
         match self {
             Some(f) => other.map(f),
@@ -126,7 +126,7 @@ impl<F, T, U> Applicative<F, T, U, Option<T>, Option<U>> for Option<F> where F: 
     }
 }
 
-impl<F, T, U, E> Applicative<F, T, U, Result<T, E>, Result<U, E>> for Result<F, E> where F: Fn(T) -> U {
+impl<F, T, U, E> Applicative<T, U, Result<T, E>, Result<U, E>> for Result<F, E> where F: Fn(T) -> U {
     fn ap(self, other: Result<T, E>) -> Result<U, E> {
         match self {
             Ok(f) => other.map(f),
