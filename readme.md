@@ -2,13 +2,13 @@
 
 The point of this crate is to add applicative functor's interface to existing monadic entities in Rust's standard library: `Option<T>` and `Result<T, E>`.
 
-Full documentation is [available here](https://belfz.github.io/applicative_functor/applicative_functor/trait.ApplicativeFunctor.html).
+Full documentation is [available here](https://belfz.github.io/applicative_functor/applicative_functor/trait.Applicative.html).
 
 ### Example
 
 ```rust
 extern crate applicative_functor;
-use applicative_functor::ApplicativeFunctor;
+use applicative_functor::Applicative;
 
 let af_opt: Option<fn(u32) -> u32> = Some(|x: u32| x * 2);
 assert_eq!(af_opt.ap(Some(21)), Some(42));
