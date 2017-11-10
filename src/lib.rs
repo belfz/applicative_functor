@@ -77,7 +77,7 @@ mod tests {
 
 /// An ApplicativeFunctor trait.
 ///
-/// This crate comes with default implementation of Applicative Functor for the Option type.
+/// This crate comes with default implementation of Applicative Functor for the `Option` and `Result` types.
 ///
 /// # Examples
 /// 
@@ -93,8 +93,8 @@ mod tests {
 /// let af_res: Result<fn(f32) -> f32, ()> = Ok(|x: f32| x * 4.0);
 /// assert_eq!(af_res.ap(Ok(10.5)), Ok(42.0));
 /// ```
-pub trait ApplicativeFunctor<F, T, U, A, B> {
-    fn ap(self, other: A) -> B;
+pub trait ApplicativeFunctor<T, U> {
+    fn ap(self, other: T) -> U;
 }
 
 // impl<T> Mappable<T> for Option<T> {}
@@ -103,7 +103,7 @@ pub trait ApplicativeFunctor<F, T, U, A, B> {
 ///
 /// It obeys the applicative functor law:
 /// `Some(f).ap(Some(a)) == Some(a).map(f)`
-impl<F, T, U> ApplicativeFunctor<F, T, U, Option<T>, Option<U>> for Option<F> where F: Fn(T) -> U {
+impl<F, T, U> ApplicativeFunctor<Option<T>, Option<U>> for Option<F> where F: Fn(T) -> U {
     fn ap(self, other: Option<T>) -> Option<U> {
         match self {
             Some(f) => other.map(f),
@@ -116,7 +116,7 @@ impl<F, T, U> ApplicativeFunctor<F, T, U, Option<T>, Option<U>> for Option<F> wh
 ///
 /// It obeys the applicative functor law:
 /// `Ok(f).ap(Ok(a)) == Ok(a).map(f)`
-impl<F, T, U, E> ApplicativeFunctor<F, T, U, Result<T, E>, Result<U, E>> for Result<F, E> where F: Fn(T) -> U {
+impl<F, T, U, E> ApplicativeFunctor<Result<T, E>, Result<U, E>> for Result<F, E> where F: Fn(T) -> U {
     fn ap(self, other: Result<T, E>) -> Result<U, E> {
         match self {
             Ok(f) => other.map(f),
