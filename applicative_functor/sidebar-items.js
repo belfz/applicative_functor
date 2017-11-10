@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Applicative","An Applicative trait."],["Functor","Functor trait."]]});
