@@ -4,7 +4,6 @@ language: rust
 
 # run builds for all the trains (and more)
 rust:
-  - nightly
   - beta
   # check it compiles on the latest stable compiler
   - stable
