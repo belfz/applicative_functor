@@ -97,8 +97,6 @@ pub trait ApplicativeFunctor<T, U> {
     fn ap(self, other: T) -> U;
 }
 
-// impl<T> Mappable<T> for Option<T> {}
-
 /// An ApplicativeFunctor implementation for `Option` that holds a function.
 ///
 /// It obeys the applicative functor law:
